@@ -3,7 +3,8 @@ import Head from 'next/head';
 // import { Inter } from 'next/font/google';
 import { Button, AirIcon, EditCalendarIcon } from '@/components/mui';
 import Layout from '@/components/Layout';
-
+import Heading from '@/components/Heading';
+import Paragraph from '@/components/Paragraph';
 // const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
@@ -16,7 +17,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <h1>Home Page</h1>
+        <Heading component="h2">
+          Home Page
+        </Heading>
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+          repudiandae saepe iusto nihil autem, hic necessitatibus repellendus
+          reiciendis consequuntur adipisci explicabo et eveniet aperiam repellat
+          corporis? Molestias nihil sapiente id?
+        </Paragraph>
         <Button variant="contained">
           <EditCalendarIcon />
           Button

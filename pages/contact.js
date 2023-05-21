@@ -3,6 +3,9 @@ import Image from 'next/image';
 // import { Inter } from 'next/font/google';
 import { Button, EditCalendarIcon } from '@/components/mui';
 import Layout from '@/components/Layout';
+import Heading from '@/components/Heading';
+import ContactForm from '@/components/forms/ContactForm';
+import { sendEmail } from '@/lib/api-functions/client';
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -16,11 +19,8 @@ export default function Contact() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <h1>Contact</h1>
-        <Button variant="contained">
-          <EditCalendarIcon />
-          Button
-        </Button>
+        <Heading component="h2">Contact Us</Heading>
+        <ContactForm submitHandler={sendEmail}/>
       </Layout>
     </>
   );

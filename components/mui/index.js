@@ -14,6 +14,10 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import CardMedia from '@mui/material';
+import CardContent from '@mui/material';
+import Card from '@mui/material';
+import CardActions from '@mui/material';
 
 export {
   Button,
@@ -31,4 +35,8 @@ export {
   ListItem,
   ListItemButton,
   ListItemText,
+  CardMedia,
+  CardActions,
+  CardContent,
+  Card,
 };

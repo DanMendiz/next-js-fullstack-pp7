@@ -12,7 +12,6 @@ import {
   CardMedia,
   CardContent,
   CardActions,
-  // Typography
 } from '@/components/mui';
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';

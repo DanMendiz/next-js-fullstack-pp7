@@ -63,15 +63,14 @@ export const getStaticProps = async () => {
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
-  console.log(allPosts);
+  // console.log(allPosts);
 
   const posts = allPosts.data.blogPosts;
   console.log(posts);
 
   return {
     props: {
-      allPosts: allPosts.data.blogPosts,
+      ssd: allPosts.data.blogPosts,
     },
   };
 };
-

@@ -1,9 +1,9 @@
 // import { useUser } from "@auth0/nextjs-auth0/client";
-import { useProducts } from "@/lib/tq/products/queries";
+import { useProducts } from '@/lib/tq/products/queries';
 // // import { useAddToBasket } from "@/lib/tq/baskets/mutations";
-import { List, ListItem } from "@/components/mui";
-import Product from "@/components/Product";
-import Paragraph from "@/components/Paragraph";
+import { List, ListItem } from '@/components/mui';
+import Product from '@/components/Product';
+import Paragraph from '@/components/Paragraph';
 
 const ProductList = ({
   deleteHandler = () => {},
@@ -12,17 +12,17 @@ const ProductList = ({
   canRemove = false,
   canBuy = true,
 }) => {
-  const { user } = useUser();
+  // const { user } = useUser();
   // const mutation = useAddToBasket();
 
-  const { data: products } = useProducts();//imported from tanstack query
+  const { data: products } = useProducts(); //imported from tanstack query
   if (!products.length) return <Paragraph>No products to show</Paragraph>;
   return (
     <List
       component="ol"
       sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(400px,1fr))',
       }}
     >
       {products.map((product) => (

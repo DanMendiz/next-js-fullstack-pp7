@@ -1,8 +1,8 @@
-// import {useContext} from 'react'
+import {useContext} from 'react'
 import Head from "next/head";
 
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-// import { fetchProducts } from "@/lib/api-functions/server/products/queries";
+import { fetchProducts } from "@/lib/api-functions/server/products/queries";
 import { STORAGE_KEY } from "@/lib/tq/products/settings";
 
 import Layout from "@/components/Layout";

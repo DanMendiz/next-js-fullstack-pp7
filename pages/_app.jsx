@@ -9,7 +9,7 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
-// import { UIProvider } from '@/components/contexts/UI.context';
+import { UIProvider } from '@/components/contexts/UI.context';
 
 import '@/styles/globals.css';
 import theme from '@/lib/theme';
@@ -37,9 +37,9 @@ export default function App({ Component, pageProps }) {
           <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools />
             <Hydrate state={pageProps.dehydratedState}>
-              {/* <UIProvider> */}
+              <UIProvider>
                 <Component {...pageProps} />
-              {/* </UIProvider> */}
+              </UIProvider>
             </Hydrate>
           </QueryClientProvider>
         </ThemeProvider>

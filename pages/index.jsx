@@ -10,9 +10,15 @@ import Heading from "@/components/Heading";
 import QueryBoundaries from "@/components/QueryBoundaries";
 import ProductList from "@/components/ProductList";
 // import { Button } from "@/components/mui";
-// import { UIContext } from '@/components/contexts/UI.context';
+import { UIContext } from '@/components/contexts/UI.context';
+import { Button } from '@mui/material';
+
+
 
 export default function Home() {
+  const {
+    showMessage
+  } = useContext(UIContext)
   return (
     <>
       <Head>
@@ -23,6 +29,10 @@ export default function Home() {
       </Head>
       <Layout>
         <Heading component="h2">Products</Heading>
+        <Button onClick={() => showMessage({
+          type: 'error',
+          string: 'Something is wrong'
+        })}>Hi</Button>
         <QueryBoundaries>
           <ProductList />
         </QueryBoundaries>
@@ -35,14 +45,14 @@ export default function Home() {
 
 export async function getStaticProps(context) {
   // console.log("LLLL", context);
-  // const products = await fetchProducts().catch((err) => console.log(err));
+  const products = await fetchProducts().catch((err) => console.log(err));
   const queryClient = new QueryClient();
 
 
   // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'
   await queryClient.setQueryData(
     [STORAGE_KEY],
-    // JSON.parse(JSON.stringify(products))
+    JSON.parse(JSON.stringify(products))
   );
 
   return {

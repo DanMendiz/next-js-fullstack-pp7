@@ -5,24 +5,21 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TextField, Button } from '@mui/material';
 
-const schema = yup
-  .object()
-  .shape({
-    from: yup.string().email().max(50).required(),
-    subject: yup.string().max(300).required(),
-    message: yup.string().max(50000).required(),
-  })
-  .required();
+import { addProductSchema, updateProductSchema } from '@/lib/validation';
 
 const defaults = {
-  from: '',
-  subject: '',
-  message: '',
+  image: "",
+  title: "",
+  description: "",
+  price: "",
+  quantity: "",
 };
 
-export default function ContactForm({ submitHandler }) {
-  // console.log(car);
-
+export default function ProductForm({ submitHandler, product }) {
+  let schema = addProductSchema;
+  if (product) {
+    schema = updateProductSchema;
+  }
   const {
     handleSubmit,
     formState: { errors, isValid, isDirty, isSubmitting },
@@ -30,7 +27,7 @@ export default function ContactForm({ submitHandler }) {
     control,
     formState,
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(),
     mode: 'onChange',
     defaultValues: defaults,
   });
@@ -55,16 +52,16 @@ export default function ContactForm({ submitHandler }) {
       <div style={formRowStyle}>
         <Controller
           control={control}
-          name="from"
+          name="image"
           defaultValue={''}
           render={({ field }) => (
             <TextField
               type="text"
               {...field}
-              label="from"
+              label="image"
               fullWidth
-              error={!!errors.from}
-              helperText={errors.from?.message}
+              error={!!errors.image}
+              helperText={errors.image?.message}
             />
           )}
         />
@@ -73,16 +70,16 @@ export default function ContactForm({ submitHandler }) {
       <div style={formRowStyle}>
         <Controller
           control={control}
-          name="subject"
+          name="title"
           defaultValue={''}
           render={({ field }) => (
             <TextField
               type="text"
               {...field}
-              label="subject"
+              label="title"
               fullWidth
-              error={!!errors.subject}
-              helperText={errors.subject?.message}
+              error={!!errors.title}
+              helperText={errors.title?.message}
             />
           )}
         />
@@ -90,21 +87,56 @@ export default function ContactForm({ submitHandler }) {
       <div style={formRowStyle}>
         <Controller
           control={control}
-          name="text"
+          name="description"
           defaultValue={''}
           render={({ field }) => (
             <TextField
-              type="message"
+              type="text"
               {...field}
-              label="message"
+              label="description"
               multiline
               rows={4}
               fullWidth
-              error={!!errors.message}
-              helperText={errors.message?.message}
+              error={!!errors.description}
+              helperText={errors.description?.message}
             />
           )}
         />
+        <div style={formRowStyle}>
+        <Controller
+          control={control}
+          name="price"
+          defaultValue={''}
+          render={({ field }) => (
+            <TextField
+              type="number"
+              {...field}
+              label="price"
+              fullWidth
+              error={!!errors.price}
+              helperText={errors.price?.message}
+            />
+          )}
+        />
+      </div>
+
+      <div style={formRowStyle}>
+        <Controller
+          control={control}
+          name="quantity"
+          defaultValue={''}
+          render={({ field }) => (
+            <TextField
+              type="number"
+              {...field}
+              label="quantity"
+              fullWidth
+              error={!!errors.quantity}
+              helperText={errors.quantity?.message}
+            />
+          )}
+        />
+      </div>
       </div>
       <div style={{ marginTop: 20 }}>
         <Button

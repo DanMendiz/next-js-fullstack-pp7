@@ -1,5 +1,6 @@
 // import { useContext } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { fetchProducts } from '@/lib/api-functions/server/products/queries';
@@ -9,12 +10,10 @@ import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import QueryBoundaries from '@/components/QueryBoundaries';
 import ProductList from '@/components/ProductList';
-
+import { Button } from '@mui/material';
 // import { UIContext } from '@/components/contexts/UI.context';
-// import { Button } from '@mui/material';
 
-export default function Home() {
-
+export default function AdminProductList() {
   return (
     <>
       <Head>
@@ -25,6 +24,13 @@ export default function Home() {
       </Head>
       <Layout>
         <Heading component="h2">Products</Heading>
+        <Button
+          variant="contained"
+          component={Link}
+          href={`/admin/products/add`}
+        >
+          Add Product
+        </Button>
         <QueryBoundaries>
           <ProductList />
         </QueryBoundaries>

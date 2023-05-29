@@ -11,9 +11,16 @@ import Heading from '@/components/Heading';
 import QueryBoundaries from '@/components/QueryBoundaries';
 import ProductList from '@/components/ProductList';
 import { Button } from '@mui/material';
+
+import { useDelete } from '@/lib/tq/products/mutations';
 // import { UIContext } from '@/components/contexts/UI.context';
 
 export default function AdminProductList() {
+  const removeMutation = useDelete();
+
+  const removeHandler = (id) => {
+    removeMutation.mutate(id);
+  };
   return (
     <>
       <Head>

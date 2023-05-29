@@ -27,7 +27,7 @@ export default function ProductForm({ submitHandler, product }) {
     control,
     formState,
   } = useForm({
-    resolver: yupResolver(),
+    resolver: yupResolver(schema),
     mode: 'onChange',
     defaultValues: product || defaults,
   });

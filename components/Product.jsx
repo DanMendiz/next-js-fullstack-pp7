@@ -16,7 +16,7 @@ import {
   Box,
 } from "@/components/mui";
 import Heading from "@/components/Heading";
-// import { slugify, formatPrice } from "@/lib/utils/formatters";
+import { slugify, formatPrice } from "@/lib/utils/formatters";
 
 const ProductDisplay = ({
   product: { _id, title, image, price, quantity } = {},
@@ -52,7 +52,8 @@ const ProductDisplay = ({
             Price
           </Typography>
           <Typography component="dd" sx={{ fontWeight: "bold" }}>
-            {formatPrice(toDecimal(dinero({ amount: price, currency: GBP})))}
+            {/* {formatPrice(toDecimal(dinero({ amount: price, currency: GBP})))} */}
+            
           </Typography>
           <Typography component="dt" sx={{ textAlign: "right" }}>
             Quantity
@@ -91,5 +92,7 @@ const ProductDisplay = ({
     </Card>
   );
 };
+
+// console.log('d', toDecimal);
 
 export default ProductDisplay;

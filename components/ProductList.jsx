@@ -1,4 +1,4 @@
-// import { useUser } from "@auth0/nextjs-auth0/client";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { useProducts } from '@/lib/tq/products/queries';
 // // import { useAddToBasket } from "@/lib/tq/baskets/mutations";
 import { List, ListItem } from '@/components/mui';

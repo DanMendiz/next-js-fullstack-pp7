@@ -8,11 +8,11 @@ import { TextField, Button } from '@mui/material';
 import { addProductSchema, updateProductSchema } from '@/lib/validation';
 
 const defaults = {
-  image: "",
-  title: "",
-  description: "",
-  price: "",
-  quantity: "",
+  image: '',
+  title: '',
+  description: '',
+  price: '',
+  quantity: '',
 };
 
 export default function ProductForm({ submitHandler, product }) {
@@ -29,7 +29,7 @@ export default function ProductForm({ submitHandler, product }) {
   } = useForm({
     resolver: yupResolver(),
     mode: 'onChange',
-    defaultValues: defaults,
+    defaultValues: product || defaults,
   });
 
   useEffect(() => {
@@ -103,40 +103,40 @@ export default function ProductForm({ submitHandler, product }) {
           )}
         />
         <div style={formRowStyle}>
-        <Controller
-          control={control}
-          name="price"
-          defaultValue={''}
-          render={({ field }) => (
-            <TextField
-              type="number"
-              {...field}
-              label="price"
-              fullWidth
-              error={!!errors.price}
-              helperText={errors.price?.message}
-            />
-          )}
-        />
-      </div>
+          <Controller
+            control={control}
+            name="price"
+            defaultValue={''}
+            render={({ field }) => (
+              <TextField
+                type="number"
+                {...field}
+                label="price"
+                fullWidth
+                error={!!errors.price}
+                helperText={errors.price?.message}
+              />
+            )}
+          />
+        </div>
 
-      <div style={formRowStyle}>
-        <Controller
-          control={control}
-          name="quantity"
-          defaultValue={''}
-          render={({ field }) => (
-            <TextField
-              type="number"
-              {...field}
-              label="quantity"
-              fullWidth
-              error={!!errors.quantity}
-              helperText={errors.quantity?.message}
-            />
-          )}
-        />
-      </div>
+        <div style={formRowStyle}>
+          <Controller
+            control={control}
+            name="quantity"
+            defaultValue={''}
+            render={({ field }) => (
+              <TextField
+                type="number"
+                {...field}
+                label="quantity"
+                fullWidth
+                error={!!errors.quantity}
+                helperText={errors.quantity?.message}
+              />
+            )}
+          />
+        </div>
       </div>
       <div style={{ marginTop: 20 }}>
         <Button

@@ -16,7 +16,7 @@ const ProductList = ({
   // const mutation = useAddToBasket();
 
   const { data: products } = useProducts(); //imported from tanstack query
-  if (!products.length) return <Paragraph>No products to show</Paragraph>;
+  if (!products.length) return <Paragraph>No product to show</Paragraph>;
   return (
     <List
       component="ol"

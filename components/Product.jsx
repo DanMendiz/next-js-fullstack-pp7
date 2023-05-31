@@ -52,8 +52,7 @@ const ProductDisplay = ({
             Price
           </Typography>
           <Typography component="dd" sx={{ fontWeight: "bold" }}>
-            {/* {formatPrice(toDecimal(dinero({ amount: price, currency: GBP})))} */}
-            
+            {formatPrice(toDecimal(dinero({ amount: price, currency: GBP})))}
           </Typography>
           <Typography component="dt" sx={{ textAlign: "right" }}>
             Quantity
@@ -92,7 +91,5 @@ const ProductDisplay = ({
     </Card>
   );
 };
-
-// console.log('d', toDecimal);
 
 export default ProductDisplay;

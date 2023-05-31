@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 import {
   AppBar,
   Box,
@@ -8,14 +8,16 @@ import {
   Toolbar,
   Typography,
   Button,
-} from '@/components/mui';
-import { useTheme } from '@mui/material/styles';
-import { useUser } from '@auth0/nextjs-auth0/client';
-import QueryBoundaries from '../QueryBoundaries';
+} from "@/components/mui";
+import { useTheme } from "@mui/material/styles";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import QueryBoundaries from "../QueryBoundaries";
+
+import ShoppingCartDisplay from "@/components/BasketDisplay";
 
 function DesktopNavigation({
   handleDrawerToggle = () =>
-    console.log('no handleDrawerToggle function provided'),
+    console.log("no handleDrawerToggle function provided"),
 }) {
   const theme = useTheme();
   const { user } = useUser();
@@ -30,7 +32,7 @@ function DesktopNavigation({
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
@@ -40,14 +42,16 @@ function DesktopNavigation({
             href={`/`}
             sx={{
               flexGrow: 1,
-              display: { xs: 'none', sm: 'block' },
-              textDecoration: 'none',
+              display: { xs: "none", sm: "block" },
+              textDecoration: "none",
               color: lightTextColor,
             }}
           >
             Design Shop
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {user && <ShoppingCartDisplay user={user} />}
+
             <Button
               sx={{ color: lightTextColor }}
               component={Link}

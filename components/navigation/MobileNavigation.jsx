@@ -1,5 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
+
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 import {
@@ -10,20 +11,21 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Box,
-} from '@/components/mui';
+  Box
+} from '@/components/mui'
+import ShoppingCartDisplay from "@/components/BasketDisplay";
 
 function MobileNavigation({
   mobileOpen = false,
   handleDrawerToggle = () =>
-    console.log('no handleDrawerToggle function provided'),
+    console.log("no handleDrawerToggle function provided"),
   drawerWidth = 240,
 }) {
   const { user } = useUser();
   const itemLinkStyles = {
-    display: 'block',
-    textDecoration: 'none',
-    flexGrow: '1',
+    display: "block",
+    textDecoration: "none",
+    flexGrow: "1",
   };
   return (
     <Box component="nav">
@@ -35,34 +37,35 @@ function MobileNavigation({
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
         }}
       >
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
           <Typography variant="h6" sx={{ my: 2 }}>
-            Design Shop
+            Design Shop {user && <ShoppingCartDisplay user={user} />}
           </Typography>
           <Divider />
           <List>
             <ListItem>
-              <Link href={'/'} passHref style={itemLinkStyles}>
-                <ListItemButton sx={{ textAlign: 'left', width: '100%' }}>
-                  <ListItemText primary={'Shop'} />
+              <Link href={"/"} passHref style={itemLinkStyles}>
+                <ListItemButton sx={{ textAlign: "left", width: '100%' }}>
+                  <ListItemText primary={"Shop"} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            
+            <ListItem>
+              <Link href={"/blog"} passHref style={itemLinkStyles}>
+                <ListItemButton sx={{ textAlign: "left", width: '100%' }}>
+                  <ListItemText primary={"Blog"} />
                 </ListItemButton>
               </Link>
             </ListItem>
             <ListItem>
-              <Link href={'/blog'} passHref style={itemLinkStyles}>
-                <ListItemButton sx={{ textAlign: 'left', width: '100%' }}>
-                  <ListItemText primary={'Blog'} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link href={'/contact'} passHref style={itemLinkStyles}>
-                <ListItemButton sx={{ textAlign: 'left', width: '100%' }}>
-                  <ListItemText primary={'Contact'} />
+              <Link href={"/contact"} passHref style={itemLinkStyles}>
+                <ListItemButton sx={{ textAlign: "left", width: '100%' }}>
+                  <ListItemText primary={"Contact"} />
                 </ListItemButton>
               </Link>
             </ListItem>

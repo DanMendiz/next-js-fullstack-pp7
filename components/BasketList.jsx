@@ -1,39 +1,36 @@
-import { useUser } from '@auth0/nextjs-auth0/client';
-import { useProducts } from '@/lib/tq/products/queries';
-// // import { useAddToBasket } from "@/lib/tq/baskets/mutations";
-import { List, ListItem } from '@/components/mui';
-import Product from '@/components/Product';
-import Paragraph from '@/components/Paragraph';
+import { nanoid } from "nanoid";
+import { List, ListItem } from "@/components/mui";
+import Product from "@/components/Product";
+import Paragraph from "@/components/Paragraph";
+import { useUserBasket } from "@/lib/tq/baskets/queries";
 
-const ProductList = ({
-  deleteHandler = () => {},
-  headingLevel = 2,
-  canUpdate = false,
-  canRemove = false,
-  canBuy = true,
+
+const BasketList = ({
+  deleteHandler = () => {
+    console.log("No deleteHandler supplied");
+  },
+  headingLevel=1
 }) => {
-  const { user } = useUser();
-  // const mutation = useAddToBasket();
-  const { data: products } = useProducts(); //imported from tanstack query
-  if (!products.length) return <Paragraph>No products to show</Paragraph>;
+  const { data: basket } = useUserBasket();
+  const {items} = basket;
+  if (!items.length) return <Paragraph>No items to show</Paragraph>;
   return (
     <List
       component="ol"
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(400px,1fr))',
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
       }}
     >
-      {products.map((product) => (
-        <ListItem key={product._id} component="li">
+      {items.map((item) => (
+        <ListItem key={nanoid()} component="li">
           <Product
-            product={product}
+            product={item}
             deleteHandler={deleteHandler}
             headingLevel={headingLevel}
-            canUpdate={canUpdate}
-            canRemove={canRemove}
-            canBuy={!!user && canBuy}
-            addToBasket={() => mutation.mutate(product._id)}
+            canBuy={false}
+            canUpdate={false}
+            canRemove={true}
           />
         </ListItem>
       ))}
@@ -41,4 +38,4 @@ const ProductList = ({
   );
 };
 
-export default ProductList;
+export default BasketList;

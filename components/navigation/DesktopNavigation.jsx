@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 import {
   AppBar,
   Box,
@@ -8,17 +8,17 @@ import {
   Toolbar,
   Typography,
   Button,
-} from "@/components/mui";
-import { useTheme } from "@mui/material/styles";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import QueryBoundaries from "../QueryBoundaries";
+} from '@/components/mui';
+import { useTheme } from '@mui/material/styles';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import QueryBoundaries from '../QueryBoundaries';
 
 function DesktopNavigation({
   handleDrawerToggle = () =>
     console.log('no handleDrawerToggle function provided'),
 }) {
-    const theme = useTheme();
-    const { user } = useUser();
+  const theme = useTheme();
+  const { user } = useUser();
   // console.log(theme);
   const lightTextColor = theme.palette.common.white;
   return (
@@ -48,7 +48,7 @@ function DesktopNavigation({
             Design Shop
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-          <Button
+            <Button
               sx={{ color: lightTextColor }}
               component={Link}
               href="/blog"
@@ -88,8 +88,6 @@ function DesktopNavigation({
                 Log In
               </Button>
             )}
-
-
           </Box>
         </Toolbar>
       </AppBar>

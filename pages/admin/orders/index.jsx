@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { fetchOrders } from '@/lib/api-functions/server/orders/queries';
+import { getOrdersQuery } from '@/lib/api-functions/server/orders/queries';
 import { STORAGE_KEY } from '@/lib/tq/orders/settings';
 
 import Layout from '@/components/Layout';
@@ -48,7 +48,7 @@ export default function AdminOrderList() {
 
 export async function getStaticProps(context) {
   // console.log("LLLL", context);
-  const orders = await fetchOrders().catch((err) => console.log(err));
+  const orders = await getOrdersQuery().catch((err) => console.log(err));
   const queryClient = new QueryClient();
 
   // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { fetchBaskets } from '@/lib/api-functions/server/baskets/queries';
+import { getBasketsQuery } from '@/lib/api-functions/server/baskets/queries';
 import { STORAGE_KEY } from '@/lib/tq/baskets/settings';
 
 import { log } from '@/lib/utils/formatters';
@@ -50,7 +50,7 @@ export default function AdminBasketList() {
 
 export async function getStaticProps(context) {
   // console.log("LLLL", context);
-  const baskets = await fetchBaskets().catch((err) => console.log(err));
+  const baskets = await getBasketsQuery().catch((err) => console.log(err));
   const queryClient = new QueryClient();
 
   // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'

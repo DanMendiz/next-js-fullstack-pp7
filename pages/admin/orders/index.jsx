@@ -38,9 +38,9 @@ export default function AdminOrderList() {
         >
           Add Order
         </Button> */}
-        <QueryBoundaries>
+        {/* <QueryBoundaries>
           <OrderList deleteHandler={removeHandler}/>
-        </QueryBoundaries>
+        </QueryBoundaries> */}
       </Layout>
     </>
   );

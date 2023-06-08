@@ -33,7 +33,7 @@ export default function AdminBasketList() {
       </Head>
       <Layout>
         <Heading component="h2">Baskets</Heading>
-        <Button
+        {/* <Button
           variant="contained"
           component={Link}
           href={`/admin/baskets/add`}
@@ -42,7 +42,7 @@ export default function AdminBasketList() {
         </Button>
         <QueryBoundaries>
           <BasketList />
-        </QueryBoundaries>
+        </QueryBoundaries> */}
       </Layout>
     </>
   );

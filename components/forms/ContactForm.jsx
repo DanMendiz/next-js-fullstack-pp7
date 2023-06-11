@@ -90,7 +90,7 @@ export default function ContactForm({ submitHandler }) {
       <div style={formRowStyle}>
         <Controller
           control={control}
-          name="text"
+          name="message"
           defaultValue={''}
           render={({ field }) => (
             <TextField

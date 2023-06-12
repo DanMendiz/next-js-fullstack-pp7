@@ -13,7 +13,7 @@ const schema = yup
     message: yup.string().max(50000).required(),
   })
   .required();
-
+//
 const defaults = {
   from: '',
   subject: '',

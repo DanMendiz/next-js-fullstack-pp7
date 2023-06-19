@@ -38,6 +38,8 @@ export async function getStaticProps(context) {
   const products = await fetchProducts().catch((err) => console.log(err));
   const queryClient = new QueryClient();
 
+  console.log('ssr products', products);
+
   // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'
   await queryClient.setQueryData(
     [STORAGE_KEY],
